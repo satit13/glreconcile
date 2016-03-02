@@ -1,12 +1,12 @@
 *       *********************************************************
 *       *                                                         
-*       * 11/04/10              MAIN.MPR                16:08:42  
+*       * 02/03/2016             MAIN.MPR               11:00:53  
 *       *                                                         
 *       *********************************************************
 *       *                                                         
 *       * Author's Name                                           
 *       *                                                         
-*       * Copyright (C) 2010 Company Name                         
+*       * Copyright (C) 2016 Company Name                         
 *       * Address                                                 
 *       * City,     Zip                                           
 *       *                                                         
@@ -26,75 +26,67 @@
 SET SYSMENU TO
 SET SYSMENU AUTOMATIC
 
-DEFINE PAD Menu1 OF _MSYSMENU PROMPT "แฟ้ม" COLOR SCHEME 3
-DEFINE PAD _32i0ylq92 OF _MSYSMENU PROMPT "กระทบยอดบัญชี" COLOR SCHEME 3
-DEFINE PAD _32i0ylq93 OF _MSYSMENU PROMPT "รายงานรายตัว ณ วันที่" COLOR SCHEME 3
-DEFINE PAD _32i0ylq94 OF _MSYSMENU PROMPT "รายงานตรวจสอบ" COLOR SCHEME 3
-DEFINE PAD _32i0ylq95 OF _MSYSMENU PROMPT "งบการเงิน" COLOR SCHEME 3
-DEFINE PAD _32i0ylq96 OF _MSYSMENU PROMPT "เกี่ยวกับโปรแกรม" COLOR SCHEME 3
-ON PAD Menu1 OF _MSYSMENU ACTIVATE POPUP แฟม
-ON PAD _32i0ylq92 OF _MSYSMENU ACTIVATE POPUP กระทบยอดบญ
-ON PAD _32i0ylq93 OF _MSYSMENU ACTIVATE POPUP รายงานรายต
-ON PAD _32i0ylq94 OF _MSYSMENU ACTIVATE POPUP รายงานตรวจ
-ON PAD _32i0ylq95 OF _MSYSMENU ACTIVATE POPUP งบการเงน
-ON SELECTION PAD _32i0ylq96 OF _MSYSMENU ;
-	DO _32i0ylq97 ;
+DEFINE PAD _4ku0nlwzq OF _MSYSMENU PROMPT "แฟ้ม" COLOR SCHEME 3
+DEFINE PAD _4ku0nlwzr OF _MSYSMENU PROMPT "กระทบยอดบัญชี" COLOR SCHEME 3
+DEFINE PAD _4ku0nlwzs OF _MSYSMENU PROMPT "รายงานรายตัว ณ วันที่" COLOR SCHEME 3
+DEFINE PAD _4ku0nlwzt OF _MSYSMENU PROMPT "รายงานตรวจสอบ" COLOR SCHEME 3
+DEFINE PAD _4ku0nlwzu OF _MSYSMENU PROMPT "งบการเงิน" COLOR SCHEME 3
+DEFINE PAD _4ku0nlwzv OF _MSYSMENU PROMPT "เกี่ยวกับโปรแกรม" COLOR SCHEME 3
+ON PAD _4ku0nlwzq OF _MSYSMENU ACTIVATE POPUP แฟม
+ON PAD _4ku0nlwzr OF _MSYSMENU ACTIVATE POPUP กระทบยอดบญ
+ON PAD _4ku0nlwzs OF _MSYSMENU ACTIVATE POPUP รายงานรายต
+ON PAD _4ku0nlwzt OF _MSYSMENU ACTIVATE POPUP รายงานตรวจ
+ON PAD _4ku0nlwzu OF _MSYSMENU ACTIVATE POPUP งบการเงน
+ON SELECTION PAD _4ku0nlwzv OF _MSYSMENU ;
+	DO _4ku0nlwzw ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 
 DEFINE POPUP แฟม MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF แฟม PROMPT "กำหนดวันที่" ;
 	KEY CTRL+D, "CTRL+D" ;
-	PICTURE "v:\โปรแกรมเสริม\vfp_program\glreconcile\pictures\time1.bmp" ;
 	MESSAGE "Set date to running report "
 DEFINE BAR 2 OF แฟม PROMPT "ออกโปรแกรม" ;
 	KEY ALT+X, "ALT+X" ;
-	PICTURE "v:\โปรแกรมเสริม\vfp_program\glreconcile\pictures\wall.bmp" ;
 	MESSAGE "Exit Program !"
 ON SELECTION BAR 1 OF แฟม ;
-	DO _32i0ylq9c ;
+	DO _4ku0nlwzx ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 2 OF แฟม ;
-	DO _32i0ylq9j ;
+	DO _4ku0nlwzy ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 
 DEFINE POPUP กระทบยอดบญ MARGIN RELATIVE SHADOW COLOR SCHEME 4
-DEFINE BAR 1 OF กระทบยอดบญ PROMPT "เจ้าหนี้" ;
-	PICTURE "pictures\view.bmp"
-DEFINE BAR 2 OF กระทบยอดบญ PROMPT "ลูกหนี้" ;
-	PICTURE "pictures\view.bmp"
-DEFINE BAR 3 OF กระทบยอดบญ PROMPT "มัดจำรับ" ;
-	PICTURE "pictures\view.bmp"
-DEFINE BAR 4 OF กระทบยอดบญ PROMPT "เช็ครับ" ;
-	PICTURE "pictures\view.bmp"
+DEFINE BAR 1 OF กระทบยอดบญ PROMPT "เจ้าหนี้"
+DEFINE BAR 2 OF กระทบยอดบญ PROMPT "ลูกหนี้"
+DEFINE BAR 3 OF กระทบยอดบญ PROMPT "มัดจำรับ"
+DEFINE BAR 4 OF กระทบยอดบญ PROMPT "เช็ครับ"
 DEFINE BAR 5 OF กระทบยอดบญ PROMPT "มัดจำจ่าย"
 DEFINE BAR 6 OF กระทบยอดบญ PROMPT "เช็คจ่าย"
 ON SELECTION BAR 1 OF กระทบยอดบญ ;
-	DO _32i0ylq9r ;
+	DO _4ku0nlwzz ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 2 OF กระทบยอดบญ ;
-	DO _32i0ylq9u ;
+	DO _4ku0nlx00 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 3 OF กระทบยอดบญ ;
-	DO _32i0ylqa1 ;
+	DO _4ku0nlx01 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 4 OF กระทบยอดบญ ;
-	DO _32i0ylqai ;
+	DO _4ku0nlx02 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 
 DEFINE POPUP รายงานรายต MARGIN RELATIVE SHADOW COLOR SCHEME 4
-DEFINE BAR 1 OF รายงานรายต PROMPT "เจ้าหนี้" ;
-	PICTURE "pictures\view.bmp"
+DEFINE BAR 1 OF รายงานรายต PROMPT "เจ้าหนี้"
 DEFINE BAR 2 OF รายงานรายต PROMPT "ลูกหนี้"
 DEFINE BAR 3 OF รายงานรายต PROMPT "เช็ครับ"
 DEFINE BAR 4 OF รายงานรายต PROMPT "เช็คจ่าย"
-DEFINE BAR 5 OF รายงานรายต PROMPT "มัดจำรับ" ;
-	PICTURE "pictures\view.bmp"
+DEFINE BAR 5 OF รายงานรายต PROMPT "มัดจำรับ"
 DEFINE BAR 6 OF รายงานรายต PROMPT "มัดจำจ่าย"
 ON SELECTION BAR 1 OF รายงานรายต ;
-	DO _32i0ylqap ;
+	DO _4ku0nlx03 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 5 OF รายงานรายต ;
-	DO _32i0ylqat ;
+	DO _4ku0nlx04 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 
 DEFINE POPUP รายงานตรวจ MARGIN RELATIVE SHADOW COLOR SCHEME 4
@@ -116,10 +108,10 @@ DEFINE POPUP กระทบยอดบล MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF กระทบยอดบล PROMPT "บิลซื้อ"
 DEFINE BAR 2 OF กระทบยอดบล PROMPT "ตั้งเจ้าหนี้อื่นๆ"
 ON SELECTION BAR 1 OF กระทบยอดบล ;
-	DO _32i0ylqaz ;
+	DO _4ku0nlx05 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 2 OF กระทบยอดบล ;
-	DO _32i0ylqb3 ;
+	DO _4ku0nlx06 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 
 DEFINE POPUP รบเงนมดจำ MARGIN RELATIVE SHADOW COLOR SCHEME 4
@@ -130,7 +122,7 @@ DEFINE POPUP กระทบยอด MARGIN RELATIVE SHADOW COLOR SCHEME 4
 DEFINE BAR 1 OF กระทบยอด PROMPT "บิลตัดมัดจำ vs GL"
 DEFINE BAR 2 OF กระทบยอด PROMPT "ใบลดหนี้มัดจำ vs GL"
 ON SELECTION BAR 1 OF กระทบยอด ;
-	DO _32i0ylqb8 ;
+	DO _4ku0nlx07 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 
 DEFINE POPUP ลกหน MARGIN RELATIVE SHADOW COLOR SCHEME 4
@@ -143,16 +135,16 @@ DEFINE BAR 2 OF _1o40rvm03 PROMPT "บิลขายเชื่อ Vs GL"
 DEFINE BAR 3 OF _1o40rvm03 PROMPT "ใบลดหนี้ Vs GL"
 DEFINE BAR 4 OF _1o40rvm03 PROMPT "ใบเสร็จรับ Vs GL"
 ON SELECTION BAR 1 OF _1o40rvm03 ;
-	DO _32i0ylqbd ;
+	DO _4ku0nlx08 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 2 OF _1o40rvm03 ;
-	DO _32i0ylqbk ;
+	DO _4ku0nlx09 ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 3 OF _1o40rvm03 ;
-	DO _32i0ylqbw ;
+	DO _4ku0nlx0a ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 ON SELECTION BAR 4 OF _1o40rvm03 ;
-	DO _32i0ylqc6 ;
+	DO _4ku0nlx0b ;
 	IN LOCFILE("GLRECONCILE\MAIN" ,"MPX;MPR|FXP;PRG" ,"WHERE is MAIN?")
 
 DEFINE POPUP งบการเงน MARGIN RELATIVE SHADOW COLOR SCHEME 4
@@ -164,7 +156,7 @@ DEFINE BAR 4 OF งบการเงน PROMPT "หมายเหตุประกอบงบ"
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQ97  ON SELECTION PAD                            
+*       * _4KU0NLWZW  ON SELECTION PAD                            
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -175,7 +167,7 @@ DEFINE BAR 4 OF งบการเงน PROMPT "หมายเหตุประกอบงบ"
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylq97
+PROCEDURE _4ku0nlwzw
 MESSAGEBOX('Nopadol panich Co.,Ltd.'+CHR(13)+'Computer Department'+CHR(13)+;
 	'GLReconcile Program Version 1.0'+CHR(13)+;
 	'User name : '+gcUserid,64,'Application Information.')
@@ -184,7 +176,7 @@ MESSAGEBOX('Nopadol panich Co.,Ltd.'+CHR(13)+'Computer Department'+CHR(13)+;
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQ9C  ON SELECTION BAR 1 OF POPUP แฟม             
+*       * _4KU0NLWZX  ON SELECTION BAR 1 OF POPUP แฟม             
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -195,14 +187,14 @@ MESSAGEBOX('Nopadol panich Co.,Ltd.'+CHR(13)+'Computer Department'+CHR(13)+;
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylq9c
+PROCEDURE _4ku0nlwzx
 
 	DO FORM dateconfig NAME dateconfig LINKED
 
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQ9J  ON SELECTION BAR 2 OF POPUP แฟม             
+*       * _4KU0NLWZY  ON SELECTION BAR 2 OF POPUP แฟม             
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -213,7 +205,7 @@ PROCEDURE _32i0ylq9c
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylq9j
+PROCEDURE _4ku0nlwzy
 *=SQLDISCONNECT(a)
 CLEAR EVENTS
 set sysmenu to default
@@ -222,7 +214,7 @@ set sysmenu to default
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQ9R  ON SELECTION BAR 1 OF POPUP กระทบยอดบญ      
+*       * _4KU0NLWZZ  ON SELECTION BAR 1 OF POPUP กระทบยอดบญ      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -233,13 +225,13 @@ set sysmenu to default
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylq9r
+PROCEDURE _4ku0nlwzz
 DO FORM AP1001 NAME AP1001 LINKED
 
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQ9U  ON SELECTION BAR 2 OF POPUP กระทบยอดบญ      
+*       * _4KU0NLX00  ON SELECTION BAR 2 OF POPUP กระทบยอดบญ      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -250,13 +242,13 @@ DO FORM AP1001 NAME AP1001 LINKED
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylq9u
+PROCEDURE _4ku0nlx00
 DO FORM AR1001 NAME AR1001 LINKED
 
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQA1  ON SELECTION BAR 3 OF POPUP กระทบยอดบญ      
+*       * _4KU0NLX01  ON SELECTION BAR 3 OF POPUP กระทบยอดบญ      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -267,14 +259,14 @@ DO FORM AR1001 NAME AR1001 LINKED
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqa1
+PROCEDURE _4ku0nlx01
 DO FORM ARDP1001 NAME ARDP1001 linked
 
 
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQAI  ON SELECTION BAR 4 OF POPUP กระทบยอดบญ      
+*       * _4KU0NLX02  ON SELECTION BAR 4 OF POPUP กระทบยอดบญ      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -285,13 +277,13 @@ DO FORM ARDP1001 NAME ARDP1001 linked
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqai
+PROCEDURE _4ku0nlx02
 DO FORM ARCQ1001 NAME ARCQ1001 linked
 
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQAP  ON SELECTION BAR 1 OF POPUP รายงานรายต      
+*       * _4KU0NLX03  ON SELECTION BAR 1 OF POPUP รายงานรายต      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -302,7 +294,7 @@ DO FORM ARCQ1001 NAME ARCQ1001 linked
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqap
+PROCEDURE _4ku0nlx03
 IF !DBUSED('config')
 	OPEN DATABASE config SHARED
 ENDIF
@@ -340,7 +332,7 @@ REPORT FORM ap1001_detail PREVIEW
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQAT  ON SELECTION BAR 5 OF POPUP รายงานรายต      
+*       * _4KU0NLX04  ON SELECTION BAR 5 OF POPUP รายงานรายต      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -351,7 +343,7 @@ REPORT FORM ap1001_detail PREVIEW
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqat
+PROCEDURE _4ku0nlx04
 *exec Usp_GL_ReconcileARDP1001_RptReamin_detail '31/10/2005','01/01/2005','01/01/2005'
 IF !DBUSED('config')
 	OPEN DATABASE config SHARED
@@ -387,7 +379,7 @@ REPORT FORM ardp1001_detail PREVIEW
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQAZ  ON SELECTION BAR 1 OF POPUP กระทบยอดบล      
+*       * _4KU0NLX05  ON SELECTION BAR 1 OF POPUP กระทบยอดบล      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -398,7 +390,7 @@ REPORT FORM ardp1001_detail PREVIEW
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqaz
+PROCEDURE _4ku0nlx05
 SET PROCEDURE TO main
 	DO ap1001_chkapinvoice
 SET PROCEDURE TO
@@ -413,7 +405,7 @@ SET PROCEDURE TO
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQB3  ON SELECTION BAR 2 OF POPUP กระทบยอดบล      
+*       * _4KU0NLX06  ON SELECTION BAR 2 OF POPUP กระทบยอดบล      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -424,7 +416,7 @@ SET PROCEDURE TO
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqb3
+PROCEDURE _4ku0nlx06
 SET PROCEDURE TO main
 	DO ap1001_chkapotherdebt
 SET PROCEDURE TO
@@ -432,7 +424,7 @@ SET PROCEDURE TO
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQB8  ON SELECTION BAR 1 OF POPUP กระทบยอด        
+*       * _4KU0NLX07  ON SELECTION BAR 1 OF POPUP กระทบยอด        
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -443,7 +435,7 @@ SET PROCEDURE TO
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqb8
+PROCEDURE _4ku0nlx07
 SET PROCEDURE TO main
 	DO ARDP1001_ChkDepWithInvoice
 SET PROCEDURE TO
@@ -451,7 +443,7 @@ SET PROCEDURE TO
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQBD  ON SELECTION BAR 1 OF POPUP _1o40rvm03      
+*       * _4KU0NLX08  ON SELECTION BAR 1 OF POPUP _1o40rvm03      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -462,7 +454,7 @@ SET PROCEDURE TO
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqbd
+PROCEDURE _4ku0nlx08
 SET PROCEDURE TO main
 	DO AR1001_ChkDebitnote
 SET PROCEDURE TO
@@ -471,7 +463,7 @@ SET PROCEDURE TO
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQBK  ON SELECTION BAR 2 OF POPUP _1o40rvm03      
+*       * _4KU0NLX09  ON SELECTION BAR 2 OF POPUP _1o40rvm03      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -482,7 +474,7 @@ SET PROCEDURE TO
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqbk
+PROCEDURE _4ku0nlx09
 SET PROCEDURE TO main
 	DO AR1001_ChkArinvoice
 SET PROCEDURE TO
@@ -490,7 +482,7 @@ SET PROCEDURE TO
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQBW  ON SELECTION BAR 3 OF POPUP _1o40rvm03      
+*       * _4KU0NLX0A  ON SELECTION BAR 3 OF POPUP _1o40rvm03      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -501,7 +493,7 @@ SET PROCEDURE TO
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqbw
+PROCEDURE _4ku0nlx0a
 SET PROCEDURE TO main
 	DO ar1001_chkCreditnote
 SET PROCEDURE TO
@@ -510,7 +502,7 @@ SET PROCEDURE TO
 
 *       *********************************************************
 *       *                                                         
-*       * _32I0YLQC6  ON SELECTION BAR 4 OF POPUP _1o40rvm03      
+*       * _4KU0NLX0B  ON SELECTION BAR 4 OF POPUP _1o40rvm03      
 *       *                                                         
 *       * Procedure Origin:                                       
 *       *                                                         
@@ -521,7 +513,7 @@ SET PROCEDURE TO
 *       *                                                         
 *       *********************************************************
 *
-PROCEDURE _32i0ylqc6
+PROCEDURE _4ku0nlx0b
 SET PROCEDURE TO main
 DO ar1001_chkreceipt1
 SET PROCEDURE TO

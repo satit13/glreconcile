@@ -13,7 +13,10 @@
  SET CONSOLE ON
  LCLASTSETTALK = SET('TALK')
  SET TALK OFF
- _Screen.Caption="GL Reconcile Application"
+ _Screen.Caption="GL Reconcile Application v.2016"
+ _Screen.Icon =  SYS(5)+CURDIR()+'ICONS\Options.ico'
+ **_Screen.Icon ='D:\WORKS\NOPADOL\GLRECONCILE\ICONS\OPTIONS.ICO'
+ 
 *  SET DEFAULT TO c:\work\cash_diary
  CSTARTPATH =FULLPATH(CURDIR())
  LCTXTFILE = 'INIT.TXT'
@@ -473,11 +476,11 @@ IF !DBUSED('config')
 				"','"+DTOC(config.firstperioddate)+;
 				"','"+lcModulecode+"'"
 	WAIT WINDOW 'Preparing data...' nowa
-	MESSAGEBOX(lccommand)
+	*MESSAGEBOX(lccommand)
 	lctmptable = 'tmp_GlAdjust_'+lcModulecode
 	lctmpalias = 'GlAdjust_'+lcModulecode
 	result = SQLEXEC(a,lccommand,lctmptable )
-	MESSAGEBOX('Prepare data completed..')
+	*MESSAGEBOX('Prepare data completed..')
 	IF result < 0
 		SET PROCEDURE TO main.prg
 		DO Errhand
@@ -492,9 +495,9 @@ IF !DBUSED('config')
 		use
 		USE SYS(2023)+'\'+(lctmpalias) exclusive IN 0 ALIAS (lctmpalias )
 		SELECT (lctmpalias )
-		WAIT WINDOW 'Current Select table Alias :  '+lctmpalias
+		*WAIT WINDOW 'Current Select table Alias :  '+lctmpalias
 		IF _tally >0 
-			MESSAGEBOX('Before Runreport..')
+			*MESSAGEBOX('Before Runreport..')
 			REPORT FORM  gladjustdoc.frx PREVIEW 
 		*brow
 		ELSE
@@ -503,5 +506,82 @@ IF !DBUSED('config')
 		*KEYBOARD '{CTRL+F10}'
 	ENDIF 
 
+
+RETURN 
+
+
+** Usp_GL_ReconcileAR1001_chkarother
+
+PROCEDURE ar1001_chkarother
+	IF !DBUSED('config')
+		OPEN DATABASE config SHARED
+	ENDIF  
+	IF !USED('config')
+		USE config!config IN 0 
+	ENDIF  
+	*exec Usp_GL_reconcileAP1001_ChkApinvoice '31/10/2005','01/01/2005','01/01/2005'
+	lccommand = "exec Usp_GL_ReconcileAR1001_chkarother'"+DTOC(config.reportdate)+"','"+DTOC(config.glbegdate)+"','"+DTOC(config.firstperioddate)+"'"
+	WAIT WINDOW 'Preparing data...' nowa
+	*MESSAGEBOX(lccommand)
+	result = SQLEXEC(a,lccommand,'tmp_ar1001_chkarother')
+	*MESSAGEBOX('Prepare data completed..')
+	IF result < 0
+		SET PROCEDURE TO main.prg
+		DO Errhand
+		SET PROCEDURE TO 
+	ELSE 
+		IF USED('ar1001_chkarother')
+		   SELECT ar1001_chkarother
+		   USE
+		ENDIF 
+		SELECT tmp_ar1001_chkarother
+		COPY TO SYS(2023)+'\ar1001_chkarother'
+		use
+		USE SYS(2023)+'\ar1001_chkarother' exclusive IN 0 ALIAS ar1001_chkarother
+		SELECT ar1001_chkarother
+		IF _tally >0 
+			REPORT FORM 1001_chkglvstrx PREVIEW 
+		ELSE
+			MESSAGEBOX('No data',64,'No data to run report!')
+		ENDIF 
+	ENDIF 
+
+RETURN 
+
+
+*******************ap1001_chkpayment*************************
+PROCEDURE ap1001_chkpayment
+	IF !DBUSED('config')
+		OPEN DATABASE config SHARED
+	ENDIF  
+	IF !USED('config')
+		USE config!config IN 0 
+	ENDIF  
+	*exec Usp_GL_reconcileAP1001_ChkApinvoice '31/10/2005','01/01/2005','01/01/2005'
+	lccommand = "exec Usp_GL_reconcileAP1001_Chkpayment '"+DTOC(config.reportdate)+"','"+DTOC(config.glbegdate)+"','"+DTOC(config.firstperioddate)+"'"
+	WAIT WINDOW 'Preparing data...' nowa
+	*MESSAGEBOX(lccommand)
+	result = SQLEXEC(a,lccommand,'tmp_ap1001_chkpayment')
+	*MESSAGEBOX('Prepare data completed..')
+	IF result < 0
+		SET PROCEDURE TO main.prg
+		DO Errhand
+		SET PROCEDURE TO 
+	ELSE 
+		IF USED('Ap1001_chkpayment')
+		   SELECT ap1001_chkpayment
+		   USE
+		ENDIF 
+		SELECT tmp_ap1001_chkpayment
+		COPY TO SYS(2023)+'\ap1001_chkpayment'
+		use
+		USE SYS(2023)+'\ap1001_chkpayment' exclusive IN 0 ALIAS ap1001_chkpayment
+		SELECT ap1001_chkpayment
+		IF _tally >0 
+			REPORT FORM 1001_chkglvstrx PREVIEW 
+		ELSE
+			MESSAGEBOX('No data',64,'No data to run report!')
+		ENDIF 
+	ENDIF 
 
 RETURN 
